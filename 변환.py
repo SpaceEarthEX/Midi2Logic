@@ -13,7 +13,7 @@ while True:
         print()
 
 import mido
-with open("D:/정보.txt","r",encoding="UTF-8") as file:
+with open("C:/Users/"+name+"/Downloads/Midi2Logic-Downloads-/정보.txt","r",encoding="UTF-8") as file:
     warning=file.readline().strip()
     textlocate=file.readline().strip()
     midilocate=file.readline().strip()
@@ -48,7 +48,7 @@ if warning=="on" :
                 print()
                 break
             if contin=="2" :
-                with open("D:/정보.txt","w",encoding="UTF-8") as file:
+                with open("C:/Users/"+name+"/Downloads/Midi2Logic-Downloads-/정보.txt","w",encoding="UTF-8") as file:
                     file.write("off\n")
                     file.write(textlocate+"\n")
                     file.write(midilocate+"\n")
