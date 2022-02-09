@@ -1,7 +1,16 @@
 print("미디->로직 변환 프로그램 Midi2Logic")
 print("설명을 전부 읽으셨길 바랍니다.")
 print()
-error=[]
+
+while True:
+    name=input("사용자명을 입력하세요. 대소문자를 구분합니다. ")
+    try:
+        with open("C:/Users/"+name+"/Downloads/Midi2Logic-Downloads-/정보.txt","r",encoding="UTF-8") as file:
+            file.read()
+    except:
+        print("파일이 존재하지 않거나 잘못된 사용자명입니다.")
+    finally:
+        print()
 
 import mido
 with open("D:/정보.txt","r",encoding="UTF-8") as file:
@@ -10,7 +19,6 @@ with open("D:/정보.txt","r",encoding="UTF-8") as file:
     midilocate=file.readline().strip()
     logiclocate=file.readline().strip()
     left=file.read()
-
 
 if warning=="on" :
     while True:
