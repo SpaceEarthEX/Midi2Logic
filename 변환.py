@@ -9,6 +9,8 @@ while True:
             file.read()
     except:
         print("파일이 존재하지 않거나 잘못된 사용자명입니다.")
+    else:
+        break
     finally:
         print()
 
