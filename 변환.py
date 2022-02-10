@@ -71,6 +71,7 @@ with open(textlocate,"w") as file:
         print("이런, 뭔가가 잘못되었네요. 직접 복사해 주시겠어요?")
         print("잠시만요...")
         print(mid)
+        print("파일 경로: "+textlocate)
         input("저장 후 엔터를 눌러 계속합니다.")
         print()
 
