@@ -2,6 +2,7 @@ print("미디->로직 변환 프로그램 Midi2Logic")
 print("설명을 전부 읽으셨길 바랍니다.")
 print()
 
+import mido
 while True:
     name=input("사용자명을 입력하세요. 대소문자를 구분합니다. ")
     try:
@@ -50,7 +51,7 @@ if warning=="on" :
                 print()
                 break
             if contin=="2" :
-                with open("C:/Users/"+name+"/Downloads/Midi2Logic-Downloads-/정보.txt","w",encoding="UTF-8") as file:
+                with open("D:/정보.txt","w",encoding="UTF-8") as file:
                     file.write("off\n")
                     file.write(textlocate+"\n")
                     file.write(midilocate+"\n")
@@ -62,7 +63,7 @@ if warning=="on" :
         else :
             print()
             break
-
+error=0
 with open(textlocate,"w") as file:
     mid=mido.MidiFile(midilocate,clip=True)
     try:
@@ -70,10 +71,12 @@ with open(textlocate,"w") as file:
     except:
         print("이런, 뭔가가 잘못되었네요. 직접 복사해 주시겠어요?")
         print("잠시만요...")
-        print(mid)
-        print("파일 경로: "+textlocate)
-        input("저장 후 엔터를 눌러 계속합니다.")
-        print()
+        error=1
+if error==1 :
+    print(mid)
+    print("파일 경로: "+textlocate)
+    input("저장 후 엔터를 눌러 계속합니다.")
+    print()
 
 block=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84]
 note=['0.00', '0.01', '0.02', '0.03', '0.04', '0.05', '0.06', '0.07', '0.08', '0.09', '0.10', '0.11', '1.00', '1.01', '1.02', '1.03', '1.04', '1.05', '1.06', '1.07', '1.08', '1.09', '1.10', '1.11', '2.00', '2.01', '2.02', '2.03', '2.04', '2.05', '2.06', '2.07', '2.08', '2.09', '2.10', '2.11', '3.00', '3.01', '3.02', '3.03', '3.04', '3.05', '3.06', '3.07', '3.08', '3.09', '3.10', '3.11', '4.00', '4.01', '4.02', '4.03', '4.04', '4.05', '4.06', '4.07', '4.08', '4.09', '4.10', '4.11', '5.00', '5.01', '5.02', '5.03', '5.04', '5.05', '5.06', '5.07', '5.08', '5.09', '5.10', '5.11', '6.00', '6.01', '6.02', '6.03', '6.04', '6.05', '6.06', '6.07', '6.08', '6.09', '6.10', '6.11']
@@ -213,12 +216,12 @@ with open(textlocate,"r") as file:
         logic.write("end\n")
         if tp==1 :
             while True:
-                end=0
+                done=0
                 for I in range(len(midi)):
                     if midi[I][0]==len(midi[I]) :
-                        end+=1
+                        done+=1
                     else :
-                        if I==end :
+                        if I==done :
                             time=midi[I][midi[I][0]][1]
                             temp=midi[I][midi[I][0]][0]
                             temp2=I
@@ -227,7 +230,7 @@ with open(textlocate,"r") as file:
                                 time=midi[I][midi[I][0]][1]
                                 temp=midi[I][midi[I][0]][0]
                                 temp2=I
-                if end==len(midi) :
+                if done==len(midi) :
                     break
                 if line>=900 :
                     over+=1
@@ -313,7 +316,10 @@ with open(textlocate,"r") as file:
         logic.write("set time2 @time\n")
         logic.write("op sub time time2 time1\n")
         logic.write("jump ")
-        logic.write(str(line+5))
+        last=line+5
+        if num==1 :
+            last+=(num+3)
+        logic.write(str(last))
         logic.write(" lessThan time 1000\n")
         logic.write("write 0 cell1 1\n")
 
