@@ -2,7 +2,6 @@ print("미디->로직 변환 프로그램 Midi2Logic")
 print("설명을 전부 읽으셨길 바랍니다.")
 print()
 
-import mido
 while True:
     name=input("사용자명을 입력하세요. 대소문자를 구분합니다. ")
     try:
@@ -51,7 +50,7 @@ if warning=="on" :
                 print()
                 break
             if contin=="2" :
-                with open("D:/정보.txt","w",encoding="UTF-8") as file:
+                with open("C:/Users/"+name+"/Downloads/Midi2Logic-Downloads-/정보.txt","w",encoding="UTF-8") as file:
                     file.write("off\n")
                     file.write(textlocate+"\n")
                     file.write(midilocate+"\n")
