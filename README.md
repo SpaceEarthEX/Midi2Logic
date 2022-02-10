@@ -1,6 +1,6 @@
 # Midi2Logic
 
-정보.txt 파일에 나와 있듯이, zip 파일을 받아서 압축파일명으로 폴더 생성 없이 압축 해제한 그대로 사용해야 합니다.
+정보.txt 파일에 나와 있듯이, zip 파일을 Downloads에 받아서 '선택된 폴더 하위에 압축파일명으로 폴더 생성' 없이 압축 해제한 그대로 사용해야 합니다.
 
 (파일 경로가 C:/Users/(사용자명)/Downloads/Midi2Logic-Downloads-/)
 
